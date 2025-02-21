@@ -1,0 +1,38 @@
+<div class="login-container">
+  <div class="login-box">
+    <mat-tab-group>
+      <mat-tab label="Login">
+        <form [formGroup]="form" (ngSubmit)="submitLogin()">
+          <input formControlName="username" type="text" placeholder="Username" required>
+          <input formControlName="password" type="password" placeholder="Password" required>
+          <button type="submit">Login</button>
+        </form>
+      </mat-tab>
+      <mat-tab label="Signup">
+        <form [formGroup]="form2" (ngSubmit)="submitSignup()">
+          <input formControlName="username" type="text" placeholder="Username" required>
+          <input formControlName="password" type="password" placeholder="Password" required>
+          <input formControlName="confirmpass" type="password" placeholder="Confirm Password" required>
+          <input formControlName="email" type="email" placeholder="E-mail" required>
+          <button type="submit">Sign Up</button>
+        </form>
+      </mat-tab>
+    </mat-tab-group>
+
+    <div *ngIf="user">
+      <h2>Add a Friend</h2>
+      <form (ngSubmit)="addFriend(Number(friendId.value))">
+        <input #friendId type="number" placeholder="Friend ID" required>
+        <button type="submit">Add Friend</button>
+      </form>
+    </div>
+
+    <div *ngIf="user">
+      <h2>Remove a Friend</h2>
+      <form (ngSubmit)="removeFriend(Number(removeFriendId.value))">
+        <input #removeFriendId type="number" placeholder="Friend ID" required>
+        <button type="submit">Remove Friend</button>
+      </form>
+    </div>
+  </div>
+</div>
